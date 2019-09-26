@@ -40,6 +40,7 @@
 		9766FB20233CC968004DAA89 = {
 			isa = PBXGroup;
 			children = (
+				9766FB3F233CD074004DAA89 /* readme.md */,
 				9766FB2B233CC968004DAA89 /* MyUITableView */,
 				9766FB2A233CC968004DAA89 /* Products */,
 			);
@@ -56,7 +57,6 @@
 		9766FB2B233CC968004DAA89 /* MyUITableView */ = {
 			isa = PBXGroup;
 			children = (
-				9766FB3F233CD074004DAA89 /* readme.md */,
 				9766FB38233CC969004DAA89 /* Info.plist */,
 				9766FB2C233CC968004DAA89 /* AppDelegate.swift */,
 				9766FB2E233CC968004DAA89 /* ViewController.swift */,
