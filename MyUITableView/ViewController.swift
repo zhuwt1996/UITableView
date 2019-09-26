@@ -16,7 +16,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //初始化
         let tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.backgroundColor = UIColor.white
-        
+        //显示侧边拖动栏
+        tableView.showsVerticalScrollIndicator = false
+        //cell中间的间隔线，默认.singleLine表示
+        tableView.separatorStyle = .none
         view.addSubview(tableView)
         //设置代理：UITableViewDelegate，UITableViewDataSource
         tableView.delegate = self
@@ -38,6 +41,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return 5
     }
     
+    //当style为grouped时，需要实现numberOfSections的代理方法
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     // 设置每个 Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 从tableview的重用池里通过cellID取一个cell
@@ -47,6 +55,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID)
         }
+        //选中cell时的样式
+        // default:默认的，点击灰色
+        cell?.selectionStyle = .none
         //cell的标题
         cell?.textLabel?.text = "MyTile"
         //副标题
