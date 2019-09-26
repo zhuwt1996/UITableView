@@ -65,12 +65,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return cell!
     }
 
-    // 选中cell后执行此方法
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
 
 }
+//---UI相关代理方法
 extension ViewController{
     // 设置 section 的 header 文字
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -110,3 +107,43 @@ extension ViewController{
         return footerView
     }
 }
+
+//---点击事件代理方法
+extension ViewController{
+    //点击cell后调用此方法
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("indexPath.row:\(indexPath.row)index.section:\(indexPath.section)")
+    }
+    //---设置左滑删除
+    //是否可编辑
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        return true
+    }
+    // 设置默认的左滑按钮的title
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "WTbtn"
+    }
+    // 点击左滑出现的按钮时触发
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("点击左滑出现的按钮时触发")
+        return
+    }
+    // 左滑结束时调用(只对默认的左滑按钮有效，自定义按钮时这个方法无效)
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        print("滑动结束啦")
+    }
+    //自定义左滑按钮
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let cellActionA = UITableViewRowAction(style: .default, title: "按钮-1", handler: {_,_ in
+            print("点击了 按钮-1")
+        })
+        cellActionA.backgroundColor = UIColor.green
+        
+        let cellActionB = UITableViewRowAction(style: .default, title: "按钮-2", handler: {_,_ in
+            print("点击了 按钮-2")
+        })
+        return [cellActionA, cellActionB]
+    }
+}
+
+
