@@ -4,30 +4,17 @@
 
 ```swift
 //初始化
-let tableView = UITableView(frame: CGRect.zero, style: .plain)
-tableView.backgroundColor = UIColor.clear
+let tableView = UITableView(frame: view.bounds, style: .grouped)
+tableView.backgroundColor = UIColor.white
 //显示侧边拖动栏
 tableView.showsVerticalScrollIndicator = false
 //cell中间的间隔线，默认.singleLine表示
 tableView.separatorStyle = .none
-//如果UITableview中cell铺不满屏，底部会自动补充空白的cell,去除底部的空白cell:
-tableView.tableFooterView = UIView()
-//选中cell时的样式
-// 默认的，点击灰色
-cell.selectionStyle = .default
-// 去除选中时的颜色
-//cell.selectionStyle = .none
-// 开启编辑模式
-tableView.isEditing = true
-// 结束编辑模式
-//tableView.isEditing = false
-//注入cell
-tableView.registerClass(PHAssistantMainCell.self)
+view.addSubview(tableView)
 //设置代理：UITableViewDelegate，UITableViewDataSource
 tableView.delegate = self
 //设置数据源
 tableView.dataSource = self
-return tableView
 ```
 
 **style**
@@ -38,7 +25,10 @@ grouped(组合)、plain(默认)
 
 ```swift
 //section的个数（分为多少组）
-public func numberOfSections(in tableView: UITableView) -> Int 
+//当style为grouped时，需要实现numberOfSections的代理方法
+public func numberOfSections(in tableView: UITableView) -> Int {
+  return 2
+}
 ```
 
 ### 代理方法
@@ -50,24 +40,28 @@ public func numberOfSections(in tableView: UITableView) -> Int
 无论是grouped还是plain都需要实现的代理方法
 
 ```swift
-//每个section中cell的个数
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-
 // 设置每个 Cell
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
   // 从tableview的重用池里通过cellID取一个cell
-  let cellID = "cell";
-  let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellID)
-	//设置cell的样式
-  if cell==nil {
-    var cellid = "cellid"
-    cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellid)
+  let cellID = "cell"
+  var cell = tableView.dequeueReusableCell(withIdentifier: cellID)
+  //设置cell的样式
+  if cell == nil {
+    cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID)
   }
+  //选中cell时的样式
+  // default:默认的，点击灰色
+  cell?.selectionStyle = .none
   //cell的标题
-  cell.textLabel?.text = String(dataArr[indexPath.row] as! String)
+  cell?.textLabel?.text = "MyTile"
   //副标题
-  cell.detailTextLabel?.text = "test\(dataArr[indexPath.row])"
-  return cell
+  cell?.detailTextLabel?.text = "Subtitle/content"
+  return cell!
+}
+
+// 选中cell后执行此方法
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  print(indexPath.row)
 }
 ```
 

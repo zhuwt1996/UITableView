@@ -19,7 +19,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //显示侧边拖动栏
         tableView.showsVerticalScrollIndicator = false
         //cell中间的间隔线，默认.singleLine表示
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         view.addSubview(tableView)
         //设置代理：UITableViewDelegate，UITableViewDataSource
         tableView.delegate = self
@@ -43,7 +43,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //当style为grouped时，需要实现numberOfSections的代理方法
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 5
     }
     
     // 设置每个 Cell
@@ -57,21 +57,56 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         //选中cell时的样式
         // default:默认的，点击灰色
-        cell?.selectionStyle = .none
+        cell?.selectionStyle = .default
         //cell的标题
         cell?.textLabel?.text = "MyTile"
         //副标题
-        cell?.detailTextLabel?.text = "Subtitle/content"
+        cell?.detailTextLabel?.text = "副标题"
         return cell!
+    }
+
+    // 选中cell后执行此方法
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+
+}
+extension ViewController{
+    // 设置 section 的 header 文字
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "header-\(section)"
+    }
+    // 设置 section 的 footer 文字
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "footer-\(section)"
     }
     
     // 设置cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
     }
-    // 选中cell后执行此方法
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+    // 设置 section 的 header 高度
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
-
+    // 设置 section 的 footer 高度
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 40
+    }
+    // cell 的文字缩进（向右）
+    func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+        return 10
+    }
+    // 自定义 section 的 header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.orange
+        return headerView
+    }
+    // 自定义 section 的 header
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor.blue
+        return footerView
+    }
 }
