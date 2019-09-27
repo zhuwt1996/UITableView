@@ -18,7 +18,7 @@ class SelectViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView = UITableView(frame: view.bounds, style: .plain)
         view.addSubview(tableView)
         
         tableView.delegate = self
@@ -82,10 +82,48 @@ extension SelectViewController{
                 }
                 i = i + 1
             }
-            
+        
             tableView.reloadData()
     }
     
+    //开启编辑模式时触发
+    //新增删除
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        if indexPath.row == 1 || indexPath.row == 3{
+//            return .delete
+//        }else{
+//            return .insert
+//        }
+//    }
+    //移动
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    //点击编辑按钮时触发
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .insert{
+            dataSource.insert(["Cash pay":"no"], at: indexPath.row)
+            tableView.insertRows(at: [indexPath], with: .right)
+        }else{
+            dataSource.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .bottom)
+        }
+        
+    }
+    
+    // 设置 cell 是否允许移动
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // 移动 cell 时触发
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // 需要维护datasource
+        let data = dataSource[sourceIndexPath.row]
+        dataSource.remove(at: sourceIndexPath.row)
+        dataSource.insert(data, at: destinationIndexPath.row)
+    }
     
 }
 
@@ -94,10 +132,6 @@ extension SelectViewController{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    //当style为grouped时，需要实现numberOfSections的代理方法
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
     // 设置 section 的 header 高度
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
@@ -105,5 +139,10 @@ extension SelectViewController{
     // 设置 section 的 footer 高度
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
+    }
+    //设置footer
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        return footerView
     }
 }
