@@ -17,19 +17,20 @@ class MyUITableViewCell: UITableViewCell {
     
     //重写init方法，设置UI
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         setupUI()
+        
     }
     
     private func setupUI(){
         
-        userLabel = UILabel(frame: CGRect(x: 74, y: 18, width: 70, height: 15))
+        userLabel = UILabel(frame: CGRect(x: 74, y: 18, width: 100, height: 15))
         userLabel.textColor = UIColor.black
         userLabel.font = UIFont.boldSystemFont(ofSize: 15)
         userLabel.textAlignment = .left
         
         
-        sexLabel = UILabel(frame: CGRect(x: 150, y: 20, width: 50, height: 13))
+        sexLabel = UILabel(frame: CGRect(x: 200, y: 20, width: 50, height: 13))
         sexLabel.textColor = UIColor.black
         sexLabel.font = UIFont.systemFont(ofSize: 13)
         sexLabel.textAlignment = .left

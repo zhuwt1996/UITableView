@@ -283,19 +283,17 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 ##### 1、声明自定义组件
 
 ```swift
-//时间视图 PHAssistantTimeView
-lazy var assistantTimeView: PHAssistantTimeView = {
+var userLabel:UILabel!      // 名字
+var sexLabel:UILabel!       // 性别
+var iconImv:UIImageView!    // 头像
+sexLabel = UILabel(frame: CGRect(x: 200, y: 20, width: 50, height: 13))
+sexLabel.textColor = UIColor.black
+sexLabel.font = UIFont.systemFont(ofSize: 13)
+sexLabel.textAlignment = .left
 
-  let assistantTimeView = PHAssistantTimeView.init()
-  return assistantTimeView
-}()
-
-//等待答案视图 PHAssistantwaitView
-lazy var assistantwaitView: PHAssistantwaitView = {
-
-  let assistantwaitView = PHAssistantwaitView.init()
-  return assistantwaitView
-}()
+iconImv = UIImageView(frame: CGRect(x: 20, y: 15, width: 44, height: 44))
+iconImv.layer.masksToBounds = true
+iconImv.layer.cornerRadius = 22.0
 ```
 
 ##### 2、重写init方法，设置UI
@@ -309,22 +307,26 @@ override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 }
 ```
 
-##### 3、添加cell
-
-```swift
-tableView.registerClass(PHAssistantMainCell.self)
-```
-
-##### 4、在UITableView的代理方法中创建cell对象
+##### 3、在UITableView的代理方法中创建cell对象
 
 ```swift
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-  let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellID)
-  return cell
+  let cellID = "defineCell"
+  var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? MyUITableViewCell
+  if cell == nil {
+    cell = MyUITableViewCell(style: .subtitle, reuseIdentifier: cellID)
+  }
+  //cell与datasource交互，cell定义了样式，从datasource中拿数据
+  let dict = dataSource[indexPath.row]
+  cell?.iconImv.image = UIImage(named: dict["icon"]!)
+  cell?.userLabel.text = dict["name"]
+  cell?.sexLabel.text = dict["sex"]
+
+  return cell!
 }
 ```
 
-##### 5、设置cell高度
+##### 4、设置cell高度
 
 ```swift
 func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
