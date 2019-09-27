@@ -44,8 +44,16 @@ class ConnectViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let rightBarButton = UIBarButtonItem(title: "choose", style: .plain, target: self, action: #selector(nextButtonClick))
+        navigationItem.rightBarButtonItem = rightBarButton
     }
 
+    @objc func nextButtonClick() {
+        let select = SelectViewController()
+        select.title = "支付方式"
+        navigationController?.pushViewController(select, animated: false)
+    }
 }
 
 extension ConnectViewController{

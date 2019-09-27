@@ -17,6 +17,7 @@
 		9766FB4E233D9A2B004DAA89 /* MyUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766FB4D233D9A2B004DAA89 /* MyUITableViewCell.swift */; };
 		9766FB50233D9FF3004DAA89 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766FB4F233D9FF3004DAA89 /* RefreshViewController.swift */; };
 		9766FB52233DA080004DAA89 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766FB51233DA080004DAA89 /* ConnectViewController.swift */; };
+		9766FB54233DA850004DAA89 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766FB53233DA850004DAA89 /* SelectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9766FB4D233D9A2B004DAA89 /* MyUITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUITableViewCell.swift; sourceTree = "<group>"; };
 		9766FB4F233D9FF3004DAA89 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
 		9766FB51233DA080004DAA89 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		9766FB53233DA850004DAA89 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				9766FB2E233CC968004DAA89 /* MyUITableViewController.swift */,
 				9766FB41233CDB2E004DAA89 /* CellViewController.swift */,
 				9766FB51233DA080004DAA89 /* ConnectViewController.swift */,
+				9766FB53233DA850004DAA89 /* SelectViewController.swift */,
 				9766FB4F233D9FF3004DAA89 /* RefreshViewController.swift */,
 				9766FB4D233D9A2B004DAA89 /* MyUITableViewCell.swift */,
 				9766FB3E233CC982004DAA89 /* SupportFiles */,
@@ -162,6 +165,7 @@
 				9766FB50233D9FF3004DAA89 /* RefreshViewController.swift in Sources */,
 				9766FB42233CDB2E004DAA89 /* CellViewController.swift in Sources */,
 				9766FB4E233D9A2B004DAA89 /* MyUITableViewCell.swift in Sources */,
+				9766FB54233DA850004DAA89 /* SelectViewController.swift in Sources */,
 				9766FB52233DA080004DAA89 /* ConnectViewController.swift in Sources */,
 				9766FB2F233CC968004DAA89 /* MyUITableViewController.swift in Sources */,
 				9766FB2D233CC968004DAA89 /* AppDelegate.swift in Sources */,

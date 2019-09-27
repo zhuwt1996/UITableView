@@ -36,9 +36,9 @@ class CellViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     @objc func nextButtonClick() {
-        let second = ConnectViewController()
-        second.title = "通讯录"
-        navigationController?.pushViewController(second, animated: false)
+        let connect = ConnectViewController()
+        connect.title = "通讯录"
+        navigationController?.pushViewController(connect, animated: false)
     }
     
 }
@@ -66,5 +66,11 @@ extension CellViewController{
     // 设置cell高度
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    //设置footer
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        return footerView
     }
 }
