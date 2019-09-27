@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,9 +18,12 @@
 		9766FB50233D9FF3004DAA89 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766FB4F233D9FF3004DAA89 /* RefreshViewController.swift */; };
 		9766FB52233DA080004DAA89 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766FB51233DA080004DAA89 /* ConnectViewController.swift */; };
 		9766FB54233DA850004DAA89 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766FB53233DA850004DAA89 /* SelectViewController.swift */; };
+		C3B0868D2F8F0C9F331D7815 /* libPods-MyUITableView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8A928AE1640EB07CDB992F /* libPods-MyUITableView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D6BB3B586FBB19A7F03FA56 /* Pods-MyUITableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyUITableView.release.xcconfig"; path = "Target Support Files/Pods-MyUITableView/Pods-MyUITableView.release.xcconfig"; sourceTree = "<group>"; };
+		1815887AB0AA99F044DFE140 /* Pods-MyUITableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyUITableView.debug.xcconfig"; path = "Target Support Files/Pods-MyUITableView/Pods-MyUITableView.debug.xcconfig"; sourceTree = "<group>"; };
 		9766FB29233CC968004DAA89 /* MyUITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyUITableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9766FB2C233CC968004DAA89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9766FB2E233CC968004DAA89 /* MyUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUITableViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +37,8 @@
 		9766FB4F233D9FF3004DAA89 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
 		9766FB51233DA080004DAA89 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		9766FB53233DA850004DAA89 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		9766FB55233E0607004DAA89 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		AF8A928AE1640EB07CDB992F /* libPods-MyUITableView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyUITableView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B0868D2F8F0C9F331D7815 /* libPods-MyUITableView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,9 +56,12 @@
 		9766FB20233CC968004DAA89 = {
 			isa = PBXGroup;
 			children = (
+				9766FB55233E0607004DAA89 /* Header.h */,
 				9766FB3F233CD074004DAA89 /* readme.md */,
 				9766FB2B233CC968004DAA89 /* MyUITableView */,
 				9766FB2A233CC968004DAA89 /* Products */,
+				E1F0B4AF1D389436127380CD /* Pods */,
+				9A7E8243BB989674AC3551BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +99,23 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
+		9A7E8243BB989674AC3551BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF8A928AE1640EB07CDB992F /* libPods-MyUITableView.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1F0B4AF1D389436127380CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1815887AB0AA99F044DFE140 /* Pods-MyUITableView.debug.xcconfig */,
+				0D6BB3B586FBB19A7F03FA56 /* Pods-MyUITableView.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -97,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9766FB3B233CC969004DAA89 /* Build configuration list for PBXNativeTarget "MyUITableView" */;
 			buildPhases = (
+				6CE0C52909B7B6D6FB7B7618 /* [CP] Check Pods Manifest.lock */,
 				9766FB25233CC968004DAA89 /* Sources */,
 				9766FB26233CC968004DAA89 /* Frameworks */,
 				9766FB27233CC968004DAA89 /* Resources */,
+				33875E03FDD6F8E60A3D867C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +184,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33875E03FDD6F8E60A3D867C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyUITableView/Pods-MyUITableView-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyUITableView/Pods-MyUITableView-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyUITableView/Pods-MyUITableView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CE0C52909B7B6D6FB7B7618 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyUITableView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9766FB25233CC968004DAA89 /* Sources */ = {
@@ -312,6 +382,7 @@
 		};
 		9766FB3C233CC969004DAA89 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1815887AB0AA99F044DFE140 /* Pods-MyUITableView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -322,13 +393,16 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ccb.MyUITableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/zwt/Desktop/Developer/MyUITableView/Header.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
 		9766FB3D233CC969004DAA89 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D6BB3B586FBB19A7F03FA56 /* Pods-MyUITableView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,8 +413,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ccb.MyUITableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/zwt/Desktop/Developer/MyUITableView/Header.h;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
