@@ -24,15 +24,23 @@ class RefreshViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView!.dataSource = self
         
         //隐藏最后更新时间
-        header.lastUpdatedTimeLabel.isHidden = true
+        header.lastUpdatedTimeLabel.isHidden = false
         //隐藏刷新状态
-        header.stateLabel.isHidden = true
+        header.stateLabel.isHidden = false
+        //MJRefreshState：
+        //pulling：下拉中
+        header.setTitle("下拉中", for: MJRefreshState.pulling)
+        //refreshing：刷新中
+        header.setTitle("刷新中", for: MJRefreshState.refreshing)
+        //idle：刷新完毕
+        header.setTitle("刷新完毕", for: MJRefreshState.idle)
+        
         //隐藏⬆️箭头
-        header.arrowView.isHidden = true
-        //刷新样式
-        header.activityIndicatorViewStyle = .white
+        header.arrowView.isHidden = false
+        //刷新样式,设置为white时无法显示⭕️
+        header.activityIndicatorViewStyle = .gray
         //绑定事件（如重新加载数据）
-        header.setRefreshingTarget(self, refreshingAction: #selector(RefreshViewController.reRoadNewData))
+        header.setRefreshingTarget(self, refreshingAction: #selector(reRoadNewData))
         
         tableView!.mj_header = header
         
@@ -42,8 +50,8 @@ class RefreshViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // 头部的下拉刷新触发事件
     @objc fileprivate func reRoadNewData () {
         // 可在此处实现下拉刷新时要执行的代码
-        
         // 模拟延迟3秒
+        tableView?.reloadData()
         Thread.sleep(forTimeInterval: 2)
         // 结束刷新
         tableView!.mj_header.endRefreshing()
