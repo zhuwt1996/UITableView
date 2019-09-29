@@ -13,6 +13,7 @@ class RefreshViewController: UIViewController,UITableViewDelegate,UITableViewDat
     //添加数据源
     var dataSource = [["微信":"yes"],["QQ":"no"],["ApplePay":"no"],["支付宝":"no"],["银联":"no"]]
     let header = MJRefreshNormalHeader()
+    let footer = MJRefreshBackNormalFooter()
     var tableView : UITableView?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,13 @@ class RefreshViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         tableView!.mj_header = header
         
+        
+        footer.activityIndicatorViewStyle = .white
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerDown))
+        footer.stateLabel.isHidden = false
+        footer.arrowView.isHidden = true
+        tableView!.mj_footer = footer
+        
         let rightBarButton = UIBarButtonItem(title: "DIYrefresh", style: .plain, target: self, action: #selector(nextButtonClick))
         navigationItem.rightBarButtonItems = [rightBarButton]
     }
@@ -53,16 +61,25 @@ class RefreshViewController: UIViewController,UITableViewDelegate,UITableViewDat
         refresh.title = "自定义gif刷新"
         navigationController?.pushViewController(refresh, animated: false)
     }
-    
-    // 2.实现下拉刷新和上拉加载的事件。
+
     // 头部的下拉刷新触发事件
-    @objc fileprivate func reRoadNewData () {
+    @objc fileprivate func reRoadNewData() {
         // 可在此处实现下拉刷新时要执行的代码
         // 模拟延迟3秒
         tableView?.reloadData()
         Thread.sleep(forTimeInterval: 2)
         // 结束刷新
         tableView!.mj_header.endRefreshing()
+    }
+    
+    // 头部的下拉刷新触发事件
+    @objc fileprivate func footerDown() {
+        // 可在此处实现下拉刷新时要执行的代码
+        // 模拟延迟3秒
+        tableView?.reloadData()
+        Thread.sleep(forTimeInterval: 2)
+        // 结束刷新
+        tableView!.mj_footer.endRefreshing()
     }
     
 }

@@ -22,7 +22,8 @@ class DiyRefreshHeader: MJRefreshGifHeader {
         }
         pullingImages.append(UIImage(named: "loading_10")!)
         
-        header.setImages(pullingImages, for: .refreshing)
+//        header.setImages(pullingImages, for: .refreshing)
+        header.setImages(pullingImages, duration: 1, for: .refreshing)
     
     }
 }

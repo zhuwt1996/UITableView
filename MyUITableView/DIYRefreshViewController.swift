@@ -28,6 +28,8 @@ class DIYRefreshViewController: UIViewController,UITableViewDelegate,UITableView
         header.lastUpdatedTimeLabel.isHidden = true
 //        //隐藏刷新状态
         header.stateLabel.isHidden = true
+        header.setRefreshingTarget(self, refreshingAction: #selector(reRoadNewData))
+        
         tableView!.mj_header = header
     }
     
@@ -35,7 +37,7 @@ class DIYRefreshViewController: UIViewController,UITableViewDelegate,UITableView
         // 可在此处实现下拉刷新时要执行的代码
         // 模拟延迟3秒
         tableView?.reloadData()
-        Thread.sleep(forTimeInterval: 4)
+        Thread.sleep(forTimeInterval: 2)
         // 结束刷新
         tableView!.mj_header.endRefreshing()
     }
