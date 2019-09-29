@@ -44,6 +44,14 @@ class RefreshViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         tableView!.mj_header = header
         
+        let rightBarButton = UIBarButtonItem(title: "DIYrefresh", style: .plain, target: self, action: #selector(nextButtonClick))
+        navigationItem.rightBarButtonItems = [rightBarButton]
+    }
+    
+    @objc func nextButtonClick() {
+        let refresh = DIYRefreshViewController()
+        refresh.title = "自定义gif刷新"
+        navigationController?.pushViewController(refresh, animated: false)
     }
     
     // 2.实现下拉刷新和上拉加载的事件。
